@@ -9777,17 +9777,18 @@ document.addEventListener('DOMContentLoaded', function () {
             var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this, props));
 
             _this.handleChange = function (event) {
+
                 _this.setState({
-                    value: event.target.value });
-                _this.props.upDate(_this.state.value);
-                console.log(_this.state.value);
+                    value: event.target.value
+                }, function () {
+                    _this.props.upDate(_this.state.value);
+                });
             };
 
             _this.state = {
                 value: ''
             };
 
-            _this.handleChange = _this.handleChange.bind(_this);
             return _this;
         }
 
@@ -9795,7 +9796,7 @@ document.addEventListener('DOMContentLoaded', function () {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement('input', {
-                    onChange: this.handleChange,
+                    onKeyUp: this.handleChange.bind(this),
                     type: 'text', className: 'search', placeholder: 'City or State' });
             }
         }]);
@@ -9863,7 +9864,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         )
                     );
                 });
-                console.log('this match arrs' + this.state.matchArray);
 
                 return _react2.default.createElement(
                     'form',
@@ -9873,8 +9873,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         'ul',
                         { className: 'cities-list' },
                         cit
-                    ),
-                    ';'
+                    )
                 );
             }
         }]);
@@ -9882,26 +9881,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return CitiesList;
     }(_react2.default.Component);
 
-    var Form = function (_React$Component3) {
-        _inherits(Form, _React$Component3);
-
-        function Form() {
-            _classCallCheck(this, Form);
-
-            return _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).apply(this, arguments));
-        }
-
-        _createClass(Form, [{
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(CitiesList, null);
-            }
-        }]);
-
-        return Form;
-    }(_react2.default.Component);
-
-    _reactDom2.default.render(_react2.default.createElement(Form, null), document.getElementById('app'));
+    _reactDom2.default.render(_react2.default.createElement(CitiesList, null), document.getElementById('app'));
 });
 
 /***/ }),

@@ -11,14 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
               value: '',
           };
 
-          this.handleChange = this.handleChange.bind(this);
+
         }
 
         handleChange = (event) => {
+
+
             this.setState({
-                value: event.target.value});
-                this.props.upDate(this.state.value);
-                console.log(this.state.value);
+             value: event.target.value
+           }, () => {
+             this.props.upDate(this.state.value);
+           });
           }
 
 
@@ -26,10 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         render() {
             return<input
-                onChange={this.handleChange}
+                onKeyUp={this.handleChange.bind(this)}
                 type="text" className="search" placeholder="City or State"/>
         }
     }
+
 
     class CitiesList extends React.Component {
         constructor() {
@@ -71,36 +75,24 @@ document.addEventListener('DOMContentLoaded', function() {
             const cit = this.state.matchArray.map(city => {
                 return <li key={city.rank}><span className="city">{city.city} </span><span className = "state">{city.state}</span></li>;
             });
-            console.log('this match arrs' + this.state.matchArray);
+
 
             return<form className="search-form">
                         <Input upDate={this.findMatches}/>
                             <ul className="cities-list">
                                {cit}
-                           </ul>;
+                           </ul>
                     </form>
         }
 
 
     }
 
-    class Form  extends React.Component{
-
-        render(){
-            return <CitiesList/>
-
-        }
-    }
-
-
-
-
-
 
 
 
     ReactDOM.render(
-        <Form/>, document.getElementById('app'));
+        <CitiesList/>, document.getElementById('app'));
 
 
 });
