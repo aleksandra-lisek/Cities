@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-document.addEventListener('DOMContentLoaded', function() {
 
+document.addEventListener('DOMContentLoaded', function() {
+const Highlight = require('react-highlighter');
     class Input extends React.Component {
 
         constructor(props) {
@@ -26,12 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // class HighlightText extends React.Component {
+    // }
+
     class CitiesList extends React.Component {
         constructor() {
             super();
             this.state = {
                 cities: [],
-                matchArray: []
+                matchArray: [],
+                wordToMatch:'',
             }
         }
 
@@ -48,19 +53,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const matchingArr = this.state.cities.filter(place => {
                 const regex = new RegExp(wordToMatch, 'gi');
+
                 return place.city.match(regex) || place.state.match(regex);
+
             });
 
-            this.setState({matchArray: matchingArr})
+            this.setState({matchArray: matchingArr,
+                            wordToMatch:wordToMatch,
+                        });
+
 
         }
 
         render() {
             const cit = this.state.matchArray.map(city => {
+
                 return <li key={city.rank}>
-                    <span className="city">{city.city}
-                    </span>
-                    <span className="state">  {city.state}</span>
+                    <Highlight search={this.state.wordToMatch}
+                        className="city">{city.city}</Highlight>
+                    <Highlight search={this.state.wordToMatch}
+                        className="state">{city.state}</Highlight>
+
                 </li>;
             });
 

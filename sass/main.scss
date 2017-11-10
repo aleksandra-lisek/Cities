@@ -19,7 +19,7 @@ body{
     background-color: #fff;
     border: 0px;
     border-bottom: 0.2rem solid #9e9b9f;
-    // border-radius: 40px;
+
 
     &:focus{
         border-bottom: 0.3rem solid #d48cf8;
@@ -61,4 +61,8 @@ body{
 
 .state{
         font-size: 2rem;
+}
+
+.highlight{
+    background-color: #d48cf8;
 }
