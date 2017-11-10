@@ -1,37 +1,19 @@
-componentDidMount() {
-    const apiCities =' https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
-    fetch(apiCities)
-    .then(r => r.json())
-    .then(data => {
-        let objects = data.value;
-        this.setState({cities: objects})
+html { font-size: 10px; font-family: 'Roboto', sans-serif; }
 
-    });
+body { display: flex; justify-content: center; }
 
-}
+.search-form { display: flex; flex-direction: column; width: 50rem; }
 
-render() {
-    const cities = this.state.cities.map(city => {
-        return <li key={city.rank}>{city.city},{city.state}</li>;
-    });
-    return <ul className="cities-list">
-        {cities}
-    </ul>;
+.search { height: 4rem; font-size: 2rem; text-align: center; }
 
-}
+.cities-list { list-style-type: none; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0; }
 
-class CitiesList extends React.Component {
+.cities-list li { width: 45rem; padding: 1rem; color: white; text-align: center; background-color: #08302f; transform: perspective(120px) rotateX(-3deg); }
 
+.cities-list li:nth-child(even) { background-color: #91c16d; transform: perspective(120px) rotateX(3deg); }
 
-}
+.city { font-size: 2.5rem; padding-right: 2rem; font-weight: 700; }
 
+.state { font-size: 2rem; }
 
-class Form  extends React.Component{
-
-    render(){
-        return <form class="search-form">
-                    <Input/>
-                    <CitiesList/>
-                </form>
-
-    }
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJodG1se1xuICAgIGZvbnQtc2l6ZTogMTBweDtcbiAgICBmb250LWZhbWlseTogJ1JvYm90bycsIHNhbnMtc2VyaWY7XG59XG5ib2R5e1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG4uc2VhcmNoLWZvcm17XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHdpZHRoOiA1MHJlbTtcbn1cblxuLnNlYXJjaHtcbiAgICBoZWlnaHQ6IDRyZW07XG4gICAgZm9udC1zaXplOiAycmVtO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmNpdGllcy1saXN0e1xuICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBwYWRkaW5nOiAwO1xuXG4gICAgbGl7XG4gICAgICAgIHdpZHRoOiA0NXJlbTtcbiAgICAgICAgcGFkZGluZzogMXJlbTtcbiAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMwODMwMmY7XG4gICAgICAgIHRyYW5zZm9ybTogcGVyc3BlY3RpdmUoMTIwcHgpIHJvdGF0ZVgoLTNkZWcpO1xuXG5cbiAgICAmOm50aC1jaGlsZChldmVuKSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzkxYzE2ZDtcbiAgICB0cmFuc2Zvcm06IHBlcnNwZWN0aXZlKDEyMHB4KSByb3RhdGVYKDNkZWcpO1xuICB9XG5cbiAgICB9XG59XG5cbi5jaXR5e1xuICAgIGZvbnQtc2l6ZTogMi41cmVtO1xuICAgIHBhZGRpbmctcmlnaHQ6IDJyZW07XG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcbn1cblxuLnN0YXRle1xuICAgICAgICBmb250LXNpemU6IDJyZW07XG59XG4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsQUFBQSxJQUFJLENBQUEsRUFDQSxTQUFTLEVBQUUsSUFBSSxFQUNmLFdBQVcsRUFBRSxvQkFBb0IsR0FDcEM7O0FBQ0QsQUFBQSxJQUFJLENBQUEsRUFDQSxPQUFPLEVBQUUsSUFBSSxFQUNiLGVBQWUsRUFBRSxNQUFNLEdBQzFCOztBQUNELEFBQUEsWUFBWSxDQUFBLEVBQ1IsT0FBTyxFQUFFLElBQUksRUFDYixjQUFjLEVBQUUsTUFBTSxFQUN0QixLQUFLLEVBQUUsS0FBSyxHQUNmOztBQUVELEFBQUEsT0FBTyxDQUFBLEVBQ0gsTUFBTSxFQUFFLElBQUksRUFDWixTQUFTLEVBQUUsSUFBSSxFQUNmLFVBQVUsRUFBRSxNQUFNLEdBQ3JCOztBQUVELEFBQUEsWUFBWSxDQUFBLEVBQ1IsZUFBZSxFQUFFLElBQUksRUFDckIsT0FBTyxFQUFFLElBQUksRUFDYixjQUFjLEVBQUUsTUFBTSxFQUN0QixlQUFlLEVBQUUsTUFBTSxFQUN2QixXQUFXLEVBQUUsTUFBTSxFQUNuQixPQUFPLEVBQUUsQ0FBQyxHQWlCYjs7QUF2QkQsQUFRSSxZQVJRLENBUVIsRUFBRSxDQUFBLEVBQ0UsS0FBSyxFQUFFLEtBQUssRUFDWixPQUFPLEVBQUUsSUFBSSxFQUNiLEtBQUssRUFBRSxLQUFLLEVBQ1osVUFBVSxFQUFFLE1BQU0sRUFDbEIsZ0JBQWdCLEVBQUUsT0FBTyxFQUN6QixTQUFTLEVBQUUsa0JBQWtCLENBQUMsY0FBYyxHQVEvQzs7QUF0QkwsQUFRSSxZQVJRLENBUVIsRUFBRSxBQVNGLFVBQVksQ0FBQSxBQUFBLElBQUksRUFBRSxFQUNsQixnQkFBZ0IsRUFBRSxPQUFPLEVBQ3pCLFNBQVMsRUFBRSxrQkFBa0IsQ0FBQyxhQUFhLEdBQzVDOztBQUtILEFBQUEsS0FBSyxDQUFBLEVBQ0QsU0FBUyxFQUFFLE1BQU0sRUFDakIsYUFBYSxFQUFFLElBQUksRUFDbkIsV0FBVyxFQUFFLEdBQUcsR0FDbkI7O0FBRUQsQUFBQSxNQUFNLENBQUEsRUFDRSxTQUFTLEVBQUUsSUFBSSxHQUN0QiJ9 */

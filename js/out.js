@@ -9788,16 +9788,13 @@ document.addEventListener('DOMContentLoaded', function () {
             _this.state = {
                 value: ''
             };
-
             return _this;
         }
 
         _createClass(Input, [{
             key: 'render',
             value: function render() {
-                return _react2.default.createElement('input', {
-                    onKeyUp: this.handleChange.bind(this),
-                    type: 'text', className: 'search', placeholder: 'City or State' });
+                return _react2.default.createElement('input', { onKeyUp: this.handleChange.bind(this), type: 'text', className: 'search', placeholder: 'City or State' });
             }
         }]);
 
@@ -9819,9 +9816,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return place.city.match(regex) || place.state.match(regex);
                 });
 
-                _this2.setState({
-                    matchArray: matchingArr
-                });
+                _this2.setState({ matchArray: matchingArr });
             };
 
             _this2.state = {
@@ -9854,12 +9849,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         _react2.default.createElement(
                             'span',
                             { className: 'city' },
-                            city.city,
-                            ' '
+                            city.city
                         ),
                         _react2.default.createElement(
                             'span',
                             { className: 'state' },
+                            '  ',
                             city.state
                         )
                     );

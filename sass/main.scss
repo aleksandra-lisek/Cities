@@ -1,0 +1,54 @@
+html{
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.search-form{
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+}
+
+.search{
+    height: 4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.cities-list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    li{
+        width: 45rem;
+        padding: 1rem;
+        color: white;
+        text-align: center;
+        background-color: #08302f;
+        transform: perspective(120px) rotateX(-3deg);
+
+
+    &:nth-child(even) {
+    background-color: #91c16d;
+    transform: perspective(120px) rotateX(3deg);
+  }
+
+    }
+}
+
+.city{
+    font-size: 2.5rem;
+    padding-right: 2rem;
+    font-weight: 700;
+}
+
+.state{
+        font-size: 2rem;
+}
